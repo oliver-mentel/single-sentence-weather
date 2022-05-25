@@ -1,0 +1,27 @@
+<div class="card">
+  <form
+  [formGroup]="weatherSearchForm"
+  (ngSubmit)="onSubmit(weatherSearchForm.value)"
+  class="search-form"
+  >
+    <div class="form-group">
+      <input
+        class="form-control"
+        type="text"
+        id="weatherLocation"
+        aria-describedby="weatherLocation"
+        placeholder="Search Location"
+        formControlName="location"
+
+      />
+    </div>
+    <button
+      mat-raised-button
+      type="submit"
+      color="primary"
+      class="btn-submit"
+    >
+      Go
+    </button>
+  </form>
+</div>

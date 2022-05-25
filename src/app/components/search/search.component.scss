@@ -1,0 +1,63 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 5px;
+}
+
+.search-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card-header {
+  align-self: flex-start;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: none;
+}
+
+input {
+  width: 23rem;
+  height: 2rem;
+  border-radius: 50px;
+  margin-bottom: 1em;
+  border: none;
+  padding: 5px;
+  font-size: 1rem;
+  background-color: #fff;
+  text-align:center;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  transition: 0.5s;
+  outline: rgb(25, 76, 146);
+}
+
+.btn-submit {
+  background-color: #848484b3;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  padding: 10px;
+  font-weight: 200;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.btn-submit:hover {
+  transition: 0.3s;
+  background: #dadada;
+  color: rgb(62, 62, 62);
+}

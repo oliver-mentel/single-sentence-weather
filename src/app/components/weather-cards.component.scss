@@ -1,0 +1,128 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  background-color: #3d3d75;
+}
+
+
+
+.title {
+  font-size: 2rem;
+  font-weight: 300;
+  color: white;
+  margin: 30px 0px 0px 0px;
+  word-spacing: 5px;
+}
+
+.subtitle {
+  font-size: 1rem;
+  font-weight: 200;
+  color: white;
+  margin: 0px 0px 20px 0px;
+  letter-spacing: 5px;
+}
+
+.search {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.weather-card-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50rem;
+  height: fit-content;
+  padding: 12px;
+  border-radius: 7px;
+  margin: 10px;
+}
+
+.card-title-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.text {
+  align-self: center;
+  margin-bottom: 2em;
+  color: #373737;
+}
+
+// Card Buttons
+
+.btn-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btn-remove {
+  align-self: flex-end;
+  border-radius: 45px;
+  height: auto;
+  width: 36px;
+  border: none;
+  background: #ffffff40;
+  padding: 10px;
+  color: #373737;
+}
+
+.btn-details {
+  align-self: flex-start;
+  border: none;
+  background: #ffffff40;
+  height: auto;
+  border-radius: 5px;
+  padding: 10px;
+  color: #373737;
+}
+
+.btn-remove:hover,
+.btn-details:hover {
+  transition: 0.3s;
+  background-color: rgb(45, 45, 94);
+  color: white;
+  cursor: pointer;
+}
+
+.detail {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.detail-item-title {
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: #373737;
+  margin-bottom: 0.5em;
+}
+
+.detail-item {
+  gap: 10px;
+}
+
+.update-time {
+  align-self: center;
+}
+
+.bad-request {
+  color: red;
+  font-size: 1.2rem;
+  font-weight: 300;
+  margin-top: 1em;
+  text-align: center;
+}

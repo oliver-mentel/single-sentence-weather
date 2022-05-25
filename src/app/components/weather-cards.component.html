@@ -1,0 +1,104 @@
+<div class="container">
+  <h1 class="title">Single Sentence Weather</h1>
+  <h2 class="subtitle">Report</h2>
+  <section>
+    <div class="search">
+      <app-search (inputValue)="onSubmit($event)"></app-search>
+    </div>
+    <!-- Error Handling  -->
+    <div *ngIf="badRequest" class="bad-request">
+      No location found under the name <i>"{{ nameOfLocation }}"</i>.
+    </div>
+  </section>
+
+  <!-- Weather result body -->
+  <div *ngFor="let location of locations">
+    <div
+      *ngIf="displayData"
+      class="weather-card-result"
+      [ngStyle]="{ background: location.temperatureColor }"
+    >
+    <div class="card-title-container">
+      <h2 style="font-weight: 300; margin-bottom: 10px; align-self: center;">
+        {{ location.location?.name | titlecase }},
+        {{ location.location?.country }}
+      </h2>
+      <button style="align-self: flex-end;" (click)="addToFavorites(location.id)">Favorite</button>
+    </div>
+      <!-- Weather Icon -->
+      <img
+        src="{{ location?.current?.condition?.icon }}"
+      />
+      <p class="text">
+        The weather in {{ location.location?.name | titlecase }} is currently
+        {{ location.current?.condition?.text }} with a current temperature of
+        {{ location?.current?.temp_c }} °C, which feels like
+        {{ location?.current?.feelslike_c | number: "1.0-0" }} °C.
+      </p>
+
+      <!-- Detail Section -->
+      <div class="detail" *ngIf="location.displayDetails">
+        <div class="detail-item">
+          <p class="detail-item-title">Local Time</p>
+          <p class="detail-item-text">
+            {{ location?.location?.localtime | date: "HH:mm" }}
+          </p>
+        </div>
+        <div class="detail-item">
+          <p class="detail-item-title">Wind</p>
+          <p class="detail-item-text">
+            {{ location?.current?.wind_kph }} km/h from the
+            {{ location?.current?.wind_dir }}
+            <br />
+            <br />
+            <strong>Wind gusts:</strong>
+            {{ location?.current?.gust_kph }} km/h
+          </p>
+        </div>
+        <div class="detail-item">
+          <p class="detail-item-title">Humidity</p>
+          <p class="detail-item-text">{{ location?.current?.humidity }}%</p>
+        </div>
+        <div class="detail-item">
+          <p class="detail-item-title">Visibility</p>
+          <p class="detail-item-text">{{ location?.current?.vis_km }} km</p>
+        </div>
+        <div class="detail-item">
+          <p class="detail-item-title">Pressure</p>
+          <p class="detail-item-text">
+            {{ location?.current?.pressure_mb }} hPa
+          </p>
+        </div>
+        <div class="detail-item">
+          <p class="detail-item-title">Precipitation</p>
+          <p class="detail-item-text">{{ location?.current?.precip_mm }} mm</p>
+        </div>
+        <div class="detail-item">
+          <p class="detail-item-title">Clouds</p>
+          <p class="detail-item-text">{{ location?.current?.cloud }} %</p>
+          <div class="detail-item">
+            <p class="detail-item-title">UV Index:</p>
+            <p class="detail-item-text">
+              {{ location?.current?.uv }}
+            </p>
+          </div>
+        </div>
+        <small class="update-time"
+          >Last updated: {{ location?.current?.last_updated }}</small
+        >
+      </div>
+
+      <!-- Button Container -->
+      <div class="btn-container">
+        <button class="btn-details" (click)="toggleDetails(location.id)">
+          {{
+            !location.displayDetails ? "display more details" : "hide details"
+          }}
+        </button>
+        <button class="btn-remove" (click)="removeLocation(location.id)">
+          X
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
