@@ -43,3 +43,7 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+environment.ts // with keys, added to gitignore
+environment.prod.ts // with keys, added to gitignore
+environment_example.ts // without keys and explaining how to set them up

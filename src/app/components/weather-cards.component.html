@@ -18,17 +18,25 @@
       class="weather-card-result"
       [ngStyle]="{ background: location.temperatureColor }"
     >
-    <div class="card-title-container">
-      <h2 style="font-weight: 300; margin-bottom: 10px; align-self: center;">
-        {{ location.location?.name | titlecase }},
-        {{ location.location?.country }}
-      </h2>
-      <button style="align-self: flex-end;" (click)="addToFavorites(location.id)">Favorite</button>
-    </div>
+      <div class="card-title-container">
+        <div style="flex-grow: 1.2"></div>
+        <h2 style="font-weight: 300; margin-bottom: 10px; align-self: center; flex-grow: 1">
+          {{ location.location?.name | titlecase }},
+          {{ location.location?.country }}
+        </h2>
+        <fa-icon
+          [ngClass]="
+            location.isFavoriteLocation ? 'btn-heart-favorite' : 'btn-heart'
+          "
+          style="align-self: flex-start"
+          [icon]="faHeart"
+          (click)="addToFavorites(location.id)"
+          size="2x"
+        ></fa-icon>
+        <!-- <button style="align-self: flex-end;" (click)="addToFavorites(location.id)">Favorite</button> -->
+      </div>
       <!-- Weather Icon -->
-      <img
-        src="{{ location?.current?.condition?.icon }}"
-      />
+      <img src="{{ location?.current?.condition?.icon }}" />
       <p class="text">
         The weather in {{ location.location?.name | titlecase }} is currently
         {{ location.current?.condition?.text }} with a current temperature of

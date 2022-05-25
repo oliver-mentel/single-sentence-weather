@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherData } from '../interfaces/weatherData';
 import { WeatherApiService } from '../services/weather-api.service';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 enum TemperatureColor {
   veryCold = '#148efbbd',
@@ -25,6 +26,7 @@ export class WeatherCardsComponent implements OnInit {
   location: WeatherData | undefined;
   badRequest: boolean = false;
   isDetailView: boolean = false;
+  faHeart = faHeart;
 
   constructor(private httpService: WeatherApiService) {}
 

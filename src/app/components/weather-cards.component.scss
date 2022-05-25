@@ -48,9 +48,23 @@
 
 .card-title-container {
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
 }
+
+.btn-heart {
+  cursor: pointer;
+  color:#ffffff40;
+}
+
+.btn-heart-favorite
+{
+  transition: 0.4s;
+  color:#d80202eb;
+  cursor: pointer;
+}
+
 
 .text {
   align-self: center;
