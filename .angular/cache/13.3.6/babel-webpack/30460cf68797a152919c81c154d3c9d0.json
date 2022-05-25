@@ -1,0 +1,1 @@
+{"ast":null,"code":"export const environment = {\n  production: true,\n  WEATHER_API_KEY: 'c67a3fd47ec84e55a21124003222205'\n};","map":null,"metadata":{},"sourceType":"module"}
