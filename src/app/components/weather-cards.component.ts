@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { WeatherData } from '../interfaces/weatherData';
 import { WeatherApiService } from '../services/weather-api.service';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faSun } from '@fortawesome/free-regular-svg-icons';
 
 enum TemperatureColor {
   veryCold = '#148efbbd',
@@ -26,7 +27,11 @@ export class WeatherCardsComponent implements OnInit {
   location: WeatherData | undefined;
   badRequest: boolean = false;
   isDetailView: boolean = false;
+
+  // Fa Icons
   faHeart = faHeart;
+  faSun = faSun;
+
 
   constructor(private httpService: WeatherApiService) {}
 
@@ -97,7 +102,6 @@ export class WeatherCardsComponent implements OnInit {
       // Remove favorite location from local storage
         this.locations.forEach((location) => {
           if (location.id === id) {
-            console.log(location.location!.name);
             localStorage.removeItem(location.location!.name);
           }
         });
@@ -110,6 +114,7 @@ export class WeatherCardsComponent implements OnInit {
   }
 
   addToFavorites(id: number) {
+
     // Add favorite location to locations array in local storage
     this.locations.forEach((location) => {
       if (location.id === id) {
