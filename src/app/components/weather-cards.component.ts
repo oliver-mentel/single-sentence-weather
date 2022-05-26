@@ -117,7 +117,6 @@ export class WeatherCardsComponent implements OnInit {
         // set location property isFavoriteLocation to true
         location.isFavoriteLocation = true;
         localStorage.setItem(location.location!.name, JSON.stringify(location));
-
       }
     });
   }
