@@ -67,7 +67,6 @@ export class WeatherCardsComponent implements OnInit {
               displayDetails: false,
               isFavoriteLocation: false,
             });
-            console.log(this.locations);
             this.displayData = true;
           }
         },
