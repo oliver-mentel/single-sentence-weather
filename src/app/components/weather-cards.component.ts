@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ErrorHandler, OnInit } from '@angular/core';
 import { WeatherData } from '../interfaces/weatherData';
 import { WeatherApiService } from '../services/weather-api.service';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
@@ -27,6 +27,7 @@ export class WeatherCardsComponent implements OnInit {
   location: WeatherData | undefined;
   badRequest: boolean = false;
   isDetailView: boolean = false;
+  isClicked: boolean = false;
 
   // Fa Icons
   faHeart = faHeart;
@@ -42,7 +43,7 @@ export class WeatherCardsComponent implements OnInit {
       );
     }
     // set all locations to displayDetails: false
-    this.locations.forEach((location) => (location.displayDetails = true));
+    this.locations.forEach((location: WeatherData) => (location.displayDetails = false));
     this.displayData = true;
   }
 
@@ -99,20 +100,20 @@ export class WeatherCardsComponent implements OnInit {
   removeLocation(id: number) {
     if (confirm('Are you sure you want to delete this location?')) {
       // Remove favorite location from local storage
-      this.locations.forEach((location) => {
+      this.locations.forEach((location: WeatherData) => {
         if (location.id === id) {
           localStorage.removeItem(location.location!.name);
         }
       });
 
       // Remove location from locations array
-      this.locations = this.locations.filter((location) => location.id !== id);
+      this.locations = this.locations.filter((location: WeatherData) => location.id !== id);
     }
   }
 
   addToFavorites(id: number) {
     // Add favorite location to locations array in local storage
-    this.locations.forEach((location) => {
+    this.locations.forEach((location: WeatherData) => {
       if (location.id === id) {
         // set location property isFavoriteLocation to true
         location.isFavoriteLocation = true;
@@ -123,7 +124,8 @@ export class WeatherCardsComponent implements OnInit {
   }
 
   toggleDetails(id: number) {
-    this.locations.forEach((location) => {
+    this.isClicked = !this.isClicked;
+    this.locations.forEach((location: WeatherData) => {
       if (location.id === id) {
         location.displayDetails = !location.displayDetails;
       }
