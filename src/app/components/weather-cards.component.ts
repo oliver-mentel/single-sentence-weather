@@ -42,8 +42,8 @@ export class WeatherCardsComponent implements OnInit {
         JSON.parse(localStorage.getItem(localStorage.key(i)!)!)
       );
     }
-    // set all locations to displayDetails: false
-    this.locations.forEach((location: WeatherData) => (location.displayDetails = false));
+    // set all locations to displayDetails: true for iOS compatibility
+    this.locations.forEach((location: WeatherData) => (location.displayDetails = true));
     this.displayData = true;
   }
 
