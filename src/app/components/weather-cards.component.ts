@@ -27,7 +27,6 @@ export class WeatherCardsComponent implements OnInit {
   location: WeatherData | undefined;
   badRequest: boolean = false;
   isDetailView: boolean = false;
-  isClicked: boolean = false;
 
   // Fa Icons
   faHeart = faHeart;
@@ -43,7 +42,7 @@ export class WeatherCardsComponent implements OnInit {
       );
     }
     // set all locations to displayDetails: true for iOS compatibility
-    this.locations.forEach((location: WeatherData) => (location.displayDetails = true));
+    this.locations.forEach((location: WeatherData) => (location.displayDetails = false));
     this.displayData = true;
   }
 
@@ -124,7 +123,6 @@ export class WeatherCardsComponent implements OnInit {
   }
 
   toggleDetails(id: number) {
-    this.isClicked = !this.isClicked;
     this.locations.forEach((location: WeatherData) => {
       if (location.id === id) {
         location.displayDetails = !location.displayDetails;
