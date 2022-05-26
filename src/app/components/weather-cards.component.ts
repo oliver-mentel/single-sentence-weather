@@ -32,7 +32,6 @@ export class WeatherCardsComponent implements OnInit {
   faHeart = faHeart;
   faSun = faSun;
 
-
   constructor(private httpService: WeatherApiService) {}
 
   ngOnInit(): void {
@@ -42,6 +41,8 @@ export class WeatherCardsComponent implements OnInit {
         JSON.parse(localStorage.getItem(localStorage.key(i)!)!)
       );
     }
+    // set all locations to displayDetails: false
+    this.locations.forEach((location) => (location.displayDetails = false));
     this.displayData = true;
   }
 
@@ -98,23 +99,19 @@ export class WeatherCardsComponent implements OnInit {
 
   removeLocation(id: number) {
     if (confirm('Are you sure you want to delete this location?')) {
-
       // Remove favorite location from local storage
-        this.locations.forEach((location) => {
-          if (location.id === id) {
-            localStorage.removeItem(location.location!.name);
-          }
-        });
+      this.locations.forEach((location) => {
+        if (location.id === id) {
+          localStorage.removeItem(location.location!.name);
+        }
+      });
 
-        // Remove location from locations array
-        this.locations = this.locations.filter(
-          (location) => location.id !== id
-        );
+      // Remove location from locations array
+      this.locations = this.locations.filter((location) => location.id !== id);
     }
   }
 
   addToFavorites(id: number) {
-
     // Add favorite location to locations array in local storage
     this.locations.forEach((location) => {
       if (location.id === id) {
@@ -123,7 +120,6 @@ export class WeatherCardsComponent implements OnInit {
         localStorage.setItem(location.location!.name, JSON.stringify(location));
       }
     });
-    console.log(this.locations);
   }
 
   toggleDetails(id: number) {
