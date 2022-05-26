@@ -12,7 +12,7 @@ export class WeatherApiService {
   getData(location: string): Observable<object> {
     return this.http
       .get(
-        'http://api.weatherapi.com/v1/current.json?key=' +
+        'https://api.weatherapi.com/v1/current.json?key=' +
           environment.WEATHER_API_KEY +
           '&q=' +
           location
