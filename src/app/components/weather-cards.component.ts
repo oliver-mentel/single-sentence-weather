@@ -42,7 +42,7 @@ export class WeatherCardsComponent implements OnInit {
       );
     }
     // set all locations to displayDetails: false
-    this.locations.forEach((location) => (location.displayDetails = false));
+    this.locations.forEach((location) => (location.displayDetails = true));
     this.displayData = true;
   }
 
@@ -126,7 +126,6 @@ export class WeatherCardsComponent implements OnInit {
     this.locations.forEach((location) => {
       if (location.id === id) {
         location.displayDetails = !location.displayDetails;
-        localStorage.getItem(location.location!.name);
       }
     });
   }
